@@ -556,3 +556,17 @@ button {
   color: #8d6e63;
   margin-top: 4px;
 }
+
+.poem-heading-reading {
+  background: var(--poem-highlight);
+  border-radius: 8px;
+  display: inline-block;
+  padding: 0 8px;
+}
+
+.poem-author-reading {
+  background: var(--poem-highlight);
+  border-radius: 8px;
+  display: inline-block;
+  padding: 0 8px;
+}

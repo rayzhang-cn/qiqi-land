@@ -13,7 +13,6 @@ type Status = 'idle' | 'playing' | 'done';
 interface CharItem {
   lineIndex: number;
   charIndex: number;
-  char: string;
 }
 
 export function PoemRecital({ poem, onExit }: { poem: Poem; onExit: () => void }) {
@@ -22,12 +21,11 @@ export function PoemRecital({ poem, onExit }: { poem: Poem; onExit: () => void }
   const avatar = useProfilesStore((s) => s.profiles.find((p) => p.id === s.activeId)?.avatar ?? '🦖');
   const recordAttempt = useProgressStore((s) => s.recordAttempt);
 
+  const reciteLines = useMemo(() => [poem.title, `${poem.author}，${poem.dynasty}`, ...poem.lines], [poem]);
+
   const items = useMemo<CharItem[]>(
-    () =>
-      poem.lines.flatMap((line, lineIndex) =>
-        toChars(line).map((char, charIndex) => ({ lineIndex, charIndex, char })),
-      ),
-    [poem],
+    () => reciteLines.flatMap((line, lineIndex) => toChars(line).map((_, charIndex) => ({ lineIndex, charIndex }))),
+    [reciteLines],
   );
 
   const [status, setStatus] = useState<Status>('idle');
@@ -66,11 +64,11 @@ export function PoemRecital({ poem, onExit }: { poem: Poem; onExit: () => void }
       return;
     }
     if (pos === 0) {
-      speak(poem.lines[items[0].lineIndex]);
+      speak(reciteLines[items[0].lineIndex]);
     } else if (items[pos].lineIndex !== items[pos - 1].lineIndex) {
-      speak(poem.lines[items[pos].lineIndex]);
+      speak(reciteLines[items[pos].lineIndex]);
     }
-  }, [pos, status, items, poem, speak, stopTimer, activeId, recordAttempt]);
+  }, [pos, status, items, reciteLines, speak, stopTimer, activeId, recordAttempt]);
 
   useEffect(() => () => stopTimer(), [stopTimer]);
 
@@ -93,8 +91,8 @@ export function PoemRecital({ poem, onExit }: { poem: Poem; onExit: () => void }
   return (
     <div className="poem-screen">
       <div className="poem-title">
-        <h2>{poem.title}</h2>
-        <span className="poem-author">
+        <h2 className={current?.lineIndex === 0 ? 'poem-heading-reading' : ''}>{poem.title}</h2>
+        <span className={`poem-author ${current?.lineIndex === 1 ? 'poem-author-reading' : ''}`}>
           {poem.author} · {poem.dynasty}
         </span>
       </div>
@@ -104,7 +102,7 @@ export function PoemRecital({ poem, onExit }: { poem: Poem; onExit: () => void }
             {toChars(line).map((ch, ci) => (
               <span
                 key={ci}
-                className={current?.lineIndex === li && current?.charIndex === ci ? 'char char-current' : 'char'}
+                className={current?.lineIndex === li + 2 && current?.charIndex === ci ? 'char char-current' : 'char'}
               >
                 {ch}
               </span>

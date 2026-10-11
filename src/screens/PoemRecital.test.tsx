@@ -43,18 +43,25 @@ describe('PoemRecital', () => {
     expect(screen.getByRole('button', { name: '开始听' })).toBeInTheDocument();
   });
 
-  it('点击开始听后朗读第一句', () => {
+  it('点击开始听后先朗读诗名', () => {
     render(<PoemRecital poem={poem} onExit={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: '开始听' }));
+    expect(speakMock).toHaveBeenCalledWith('静夜思');
+  });
+
+  it('读完诗名后朗读作者·朝代，再读正文', () => {
+    render(<PoemRecital poem={poem} onExit={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: '开始听' }));
+    act(() => { vi.advanceTimersByTime(3 * 350); });
+    expect(speakMock).toHaveBeenCalledWith('李白，唐');
+    act(() => { vi.advanceTimersByTime(3 * 350); });
     expect(speakMock).toHaveBeenCalledWith('床前明月光');
   });
 
   it('逐字推进，播完触发完成并记录星星', () => {
     render(<PoemRecital poem={poem} onExit={vi.fn()} />);
     fireEvent.click(screen.getByRole('button', { name: '开始听' }));
-    act(() => {
-      vi.advanceTimersByTime(10 * 350);
-    });
+    act(() => { vi.advanceTimersByTime(16 * 350); });
     expect(screen.getByLabelText('获得星星')).toBeInTheDocument();
     expect(useProgressStore.getState().byProfile['p1']['poem-test']).toMatchObject({ stars: 1 });
   });
