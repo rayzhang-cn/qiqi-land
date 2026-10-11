@@ -23,8 +23,8 @@ export function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'profiles' });
 
   const openIsland = (domain: string) => {
-    if (domain === 'math') setScreen({ name: 'chapters', island: 'math' });
-    else if (domain === 'language') setScreen({ name: 'poem-list' });
+    if (domain === 'language') setScreen({ name: 'poem-list' });
+    else setScreen({ name: 'chapters', island: domain });
   };
 
   switch (screen.name) {

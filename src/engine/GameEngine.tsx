@@ -6,6 +6,9 @@ import { useProgressStore } from '../stores/progress';
 import { TapToIdentify } from '../templates/TapToIdentify';
 import { CountingGame } from '../templates/CountingGame';
 import { ArithmeticGame } from '../templates/ArithmeticGame';
+import { ClassifyGame } from '../templates/ClassifyGame';
+import { ColoringGame } from '../templates/ColoringGame';
+import { MusicGame } from '../templates/MusicGame';
 import { Buddy } from '../components/Buddy';
 
 const ENCOURAGEMENTS = ['没关系，再试一次！', '加油，你可以的！', '仔细想想，马上就想到了！'];
@@ -32,6 +35,23 @@ export function GameEngine({ level, onExit }: { level: LevelData; onExit: () => 
     speak(ENCOURAGEMENTS[Math.floor(Math.random() * ENCOURAGEMENTS.length)]);
   };
 
+  const renderTemplate = () => {
+    switch (level.template) {
+      case 'tap-identify':
+        return <TapToIdentify data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />;
+      case 'count':
+        return <CountingGame data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />;
+      case 'arithmetic':
+        return <ArithmeticGame data={level.data} mode={level.mode} onCorrect={handleCorrect} onMistake={handleMistake} />;
+      case 'classify':
+        return <ClassifyGame data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />;
+      case 'coloring':
+        return <ColoringGame data={level.data} onCorrect={handleCorrect} />;
+      case 'music':
+        return <MusicGame data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />;
+    }
+  };
+
   if (phase === 'reward') {
     return (
       <div className="reward-view">
@@ -53,13 +73,7 @@ export function GameEngine({ level, onExit }: { level: LevelData; onExit: () => 
       <button className="listen-button" onClick={speakPrompt} aria-label="听一听">
         🔊 听一听
       </button>
-      {level.template === 'tap-identify' ? (
-        <TapToIdentify data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
-      ) : level.template === 'count' ? (
-        <CountingGame data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
-      ) : (
-        <ArithmeticGame data={level.data} mode={level.mode} onCorrect={handleCorrect} onMistake={handleMistake} />
-      )}
+      {renderTemplate()}
     </div>
   );
 }

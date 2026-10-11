@@ -10,5 +10,41 @@
     "island": "math",
     "title": "加减工厂",
     "story": "数字过山车需要更厉害的算式，来当小小计算师吧！"
+  },
+  {
+    "id": "science-animals",
+    "island": "science",
+    "title": "动物王国",
+    "story": "森林里住着好多小动物，来认识它们吧！"
+  },
+  {
+    "id": "science-weather",
+    "island": "science",
+    "title": "四季天气",
+    "story": "晴天、下雨、下雪……今天是什么天气？"
+  },
+  {
+    "id": "science-space",
+    "island": "science",
+    "title": "小小宇航员",
+    "story": "坐上火箭，去看看太阳、月亮和星星吧！"
+  },
+  {
+    "id": "art-colors",
+    "island": "art",
+    "title": "颜色实验室",
+    "story": "红黄蓝绿，一起认识美丽的颜色！"
+  },
+  {
+    "id": "art-doodle",
+    "island": "art",
+    "title": "涂鸦画室",
+    "story": "拿起画笔，画出你心里的世界！"
+  },
+  {
+    "id": "art-rhythm",
+    "island": "art",
+    "title": "节奏音乐厅",
+    "story": "听一听小动物的叫声，跟着节奏一起玩！"
   }
 ]

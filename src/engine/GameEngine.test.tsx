@@ -37,6 +37,27 @@ const arithLevel: LevelData = {
   data: { op: 'add', maxResult: 10, problemCount: 5 },
 };
 
+const classifyLevel: LevelData = {
+  id: 'cl1',
+  chapter: 'science-animals',
+  order: 1,
+  domain: 'science',
+  ageBand: '3-4',
+  template: 'classify',
+  voicePrompt: '把会飞的动物拖进云朵',
+  reward: { stars: 1 },
+  data: {
+    buckets: [
+      { id: 'fly', label: '会飞', emoji: '☁️' },
+      { id: 'water', label: '水里', emoji: '🌊' },
+    ],
+    items: [
+      { id: 'bird', emoji: '🐦', label: '小鸟', bucketId: 'fly' },
+      { id: 'fish', emoji: '🐟', label: '鱼', bucketId: 'water' },
+    ],
+  },
+};
+
 beforeEach(() => {
   localStorage.clear();
   speakMock.mockClear();
@@ -88,5 +109,10 @@ describe('GameEngine', () => {
   it('arithmetic 关卡渲染算术游戏', () => {
     render(<GameEngine level={arithLevel} onExit={vi.fn()} />);
     expect(screen.getByText('第 1 / 5 题')).toBeInTheDocument();
+  });
+
+  it('classify 关卡渲染分类游戏', () => {
+    render(<GameEngine level={classifyLevel} onExit={vi.fn()} />);
+    expect(screen.getByRole('button', { name: '小鸟' })).toBeInTheDocument();
   });
 });
