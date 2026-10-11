@@ -24,6 +24,19 @@ const level: LevelData = {
   data: { objects: [{ emoji: '🍎', count: 3 }], choices: [2, 3, 4], answer: 3 },
 };
 
+const arithLevel: LevelData = {
+  id: 'arith1',
+  chapter: 'math-ch2',
+  order: 1,
+  domain: 'math',
+  ageBand: '5-6',
+  template: 'arithmetic',
+  mode: 'choice',
+  voicePrompt: '算一算，选出正确的答案',
+  reward: { stars: 1 },
+  data: { op: 'add', maxResult: 10, problemCount: 5 },
+};
+
 beforeEach(() => {
   localStorage.clear();
   speakMock.mockClear();
@@ -70,5 +83,10 @@ describe('GameEngine', () => {
     await userEvent.click(screen.getByRole('button', { name: '3' }));
     await userEvent.click(screen.getByRole('button', { name: '继续' }));
     expect(onExit).toHaveBeenCalledTimes(1);
+  });
+
+  it('arithmetic 关卡渲染算术游戏', () => {
+    render(<GameEngine level={arithLevel} onExit={vi.fn()} />);
+    expect(screen.getByText('第 1 / 5 题')).toBeInTheDocument();
   });
 });

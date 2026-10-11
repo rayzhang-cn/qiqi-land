@@ -5,6 +5,7 @@ import { useProfilesStore } from '../stores/profiles';
 import { useProgressStore } from '../stores/progress';
 import { TapToIdentify } from '../templates/TapToIdentify';
 import { CountingGame } from '../templates/CountingGame';
+import { ArithmeticGame } from '../templates/ArithmeticGame';
 import { Buddy } from '../components/Buddy';
 
 const ENCOURAGEMENTS = ['没关系，再试一次！', '加油，你可以的！', '仔细想想，马上就想到了！'];
@@ -56,7 +57,9 @@ export function GameEngine({ level, onExit }: { level: LevelData; onExit: () => 
         <TapToIdentify data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
       ) : level.template === 'count' ? (
         <CountingGame data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
-      ) : null}
+      ) : (
+        <ArithmeticGame data={level.data} mode={level.mode} onCorrect={handleCorrect} onMistake={handleMistake} />
+      )}
     </div>
   );
 }
