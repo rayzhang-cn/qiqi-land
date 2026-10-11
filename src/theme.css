@@ -305,3 +305,148 @@ button {
   80% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
+
+/* 诗词小径 · 护眼配色 */
+:root {
+  --poem-bg: #f5f1e8;
+  --poem-ink: #3e2723;
+  --poem-ink-soft: #8d6e63;
+  --poem-highlight: #c8e6c9;
+  --poem-button: #ef9a9a;
+}
+
+.poem-screen {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+  background: var(--poem-bg);
+  min-height: 100vh;
+  color: var(--poem-ink);
+}
+
+.poem-title h2 {
+  font-size: 2rem;
+  margin: 8px 0 4px;
+}
+
+.poem-author {
+  color: var(--poem-ink-soft);
+}
+
+.poem-lines {
+  margin: 28px 0;
+}
+
+.poem-line {
+  font-family: serif;
+  font-size: 1.9rem;
+  line-height: 2.2;
+}
+
+.char {
+  padding: 0 2px;
+  border-radius: 6px;
+}
+
+.char-current {
+  background: var(--poem-highlight);
+}
+
+.poem-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.poem-play {
+  background: var(--poem-button);
+  color: var(--poem-ink);
+  font-size: 1.3rem;
+  padding: 12px 28px;
+  border-radius: 999px;
+}
+
+.poem-stop {
+  background: #fff;
+  border: 1px solid #e0d5c7;
+  color: var(--poem-ink);
+  font-size: 1.3rem;
+  padding: 12px 28px;
+  border-radius: 999px;
+}
+
+.poem-list {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px;
+  background: var(--poem-bg);
+  min-height: 100vh;
+  color: var(--poem-ink);
+}
+
+.poem-list-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #ff8a65;
+  margin: 8px 0 4px;
+}
+
+.poem-list-story {
+  text-align: center;
+  color: var(--poem-ink-soft);
+}
+
+.poem-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.poem-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.poem-card-title {
+  font-size: 1.5rem;
+  color: var(--poem-ink);
+  display: block;
+}
+
+.poem-card-meta {
+  color: var(--poem-ink-soft);
+  font-size: 0.95rem;
+}
+
+.poem-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.poem-badge {
+  font-size: 0.85rem;
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.poem-badge-known {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.poem-badge-new {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+}
