@@ -1,0 +1,11 @@
+{
+  "id": "math34-05",
+  "chapter": "math-ch1",
+  "order": 5,
+  "domain": "math",
+  "ageBand": "3-4",
+  "template": "count",
+  "voicePrompt": "数一数，有几颗星星？",
+  "reward": { "stars": 1 },
+  "data": { "objects": [{ "emoji": "⭐", "count": 4 }], "choices": [3, 4, 5], "answer": 4 }
+}

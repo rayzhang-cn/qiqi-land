@@ -1,0 +1,11 @@
+{
+  "id": "math34-03",
+  "chapter": "math-ch1",
+  "order": 3,
+  "domain": "math",
+  "ageBand": "3-4",
+  "template": "count",
+  "voicePrompt": "数一数，有几只小鸭子？",
+  "reward": { "stars": 1 },
+  "data": { "objects": [{ "emoji": "🦆", "count": 5 }], "choices": [4, 5, 6], "answer": 5 }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "math34-02",
+  "chapter": "math-ch1",
+  "order": 2,
+  "domain": "math",
+  "ageBand": "3-4",
+  "template": "tap-identify",
+  "voicePrompt": "点一点数字 2",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "1️⃣", "label": "数字1" },
+      { "id": "b", "emoji": "2️⃣", "label": "数字2" },
+      { "id": "c", "emoji": "3️⃣", "label": "数字3" }
+    ],
+    "answerCardId": "b"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "math56-06",
+  "chapter": "math-ch1",
+  "order": 6,
+  "domain": "math",
+  "ageBand": "5-6",
+  "template": "count",
+  "voicePrompt": "5 条小鱼和 3 条小鱼合在一起，一共几条？",
+  "reward": { "stars": 2 },
+  "data": {
+    "objects": [
+      { "emoji": "🐟", "count": 5 },
+      { "emoji": "🐟", "count": 3 }
+    ],
+    "choices": [7, 8, 9],
+    "answer": 8
+  }
+}

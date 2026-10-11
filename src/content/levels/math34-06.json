@@ -1,0 +1,18 @@
+{
+  "id": "math34-06",
+  "chapter": "math-ch1",
+  "order": 6,
+  "domain": "math",
+  "ageBand": "3-4",
+  "template": "tap-identify",
+  "voicePrompt": "点一点圆形",
+  "reward": { "stars": 2 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "🔴", "label": "圆形" },
+      { "id": "b", "emoji": "🟦", "label": "正方形" },
+      { "id": "c", "emoji": "🔺", "label": "三角形" }
+    ],
+    "answerCardId": "a"
+  }
+}

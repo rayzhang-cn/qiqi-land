@@ -1,0 +1,18 @@
+{
+  "id": "math56-02",
+  "chapter": "math-ch1",
+  "order": 2,
+  "domain": "math",
+  "ageBand": "5-6",
+  "template": "count",
+  "voicePrompt": "3 个苹果和 2 个梨，一共有几个水果？",
+  "reward": { "stars": 1 },
+  "data": {
+    "objects": [
+      { "emoji": "🍎", "count": 3 },
+      { "emoji": "🍐", "count": 2 }
+    ],
+    "choices": [4, 5, 6],
+    "answer": 5
+  }
+}

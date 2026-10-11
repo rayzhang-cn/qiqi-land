@@ -1,0 +1,18 @@
+{
+  "id": "math56-04",
+  "chapter": "math-ch1",
+  "order": 4,
+  "domain": "math",
+  "ageBand": "5-6",
+  "template": "tap-identify",
+  "voicePrompt": "点一点数字 6，小心别点到 9 哦",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "9️⃣", "label": "数字9" },
+      { "id": "b", "emoji": "6️⃣", "label": "数字6" },
+      { "id": "c", "emoji": "8️⃣", "label": "数字8" }
+    ],
+    "answerCardId": "b"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "math56-03",
+  "chapter": "math-ch1",
+  "order": 3,
+  "domain": "math",
+  "ageBand": "5-6",
+  "template": "count",
+  "voicePrompt": "4 个气球又飞来了 4 个，现在有几个气球？",
+  "reward": { "stars": 1 },
+  "data": {
+    "objects": [
+      { "emoji": "🎈", "count": 4 },
+      { "emoji": "🎈", "count": 4 }
+    ],
+    "choices": [7, 8, 9],
+    "answer": 8
+  }
+}

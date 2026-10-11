@@ -1,0 +1,11 @@
+{
+  "id": "math56-05",
+  "chapter": "math-ch1",
+  "order": 5,
+  "domain": "math",
+  "ageBand": "5-6",
+  "template": "count",
+  "voicePrompt": "数一数，有几只小鸡？",
+  "reward": { "stars": 1 },
+  "data": { "objects": [{ "emoji": "🐤", "count": 9 }], "choices": [8, 9, 10], "answer": 9 }
+}
