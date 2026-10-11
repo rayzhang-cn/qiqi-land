@@ -1,0 +1,20 @@
+{
+  "id": "art-10",
+  "chapter": "art-rhythm",
+  "order": 4,
+  "domain": "art",
+  "ageBand": "5-6",
+  "template": "music",
+  "voicePrompt": "难度升级，记住更长的旋律",
+  "reward": { "stars": 2 },
+  "data": {
+    "notes": [
+      { "id": "cat", "emoji": "🐱", "tone": 262 },
+      { "id": "dog", "emoji": "🐶", "tone": 330 },
+      { "id": "bird", "emoji": "🐦", "tone": 392 },
+      { "id": "frog", "emoji": "🐸", "tone": 523 }
+    ],
+    "rounds": 5,
+    "startLength": 3
+  }
+}

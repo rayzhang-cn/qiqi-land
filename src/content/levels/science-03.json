@@ -1,0 +1,19 @@
+{
+  "id": "science-03",
+  "chapter": "science-animals",
+  "order": 3,
+  "domain": "science",
+  "ageBand": "5-6",
+  "template": "tap-identify",
+  "voicePrompt": "点一点会游泳的动物",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "🐢", "label": "乌龟" },
+      { "id": "b", "emoji": "🐒", "label": "猴子" },
+      { "id": "c", "emoji": "🐧", "label": "企鹅" },
+      { "id": "d", "emoji": "🐍", "label": "蛇" }
+    ],
+    "answerCardId": "a"
+  }
+}

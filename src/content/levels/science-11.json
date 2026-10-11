@@ -1,0 +1,19 @@
+{
+  "id": "science-11",
+  "chapter": "science-space",
+  "order": 3,
+  "domain": "science",
+  "ageBand": "5-6",
+  "template": "tap-identify",
+  "voicePrompt": "点一点地球",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "🌍", "label": "地球" },
+      { "id": "b", "emoji": "🪐", "label": "土星" },
+      { "id": "c", "emoji": "☄️", "label": "彗星" },
+      { "id": "d", "emoji": "🌙", "label": "月亮" }
+    ],
+    "answerCardId": "a"
+  }
+}

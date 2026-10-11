@@ -1,0 +1,17 @@
+{
+  "id": "art-01",
+  "chapter": "art-colors",
+  "order": 1,
+  "domain": "art",
+  "ageBand": "3-4",
+  "template": "tap-identify",
+  "voicePrompt": "点一点红色",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "🔴", "label": "红色" },
+      { "id": "b", "emoji": "🔵", "label": "蓝色" }
+    ],
+    "answerCardId": "a"
+  }
+}

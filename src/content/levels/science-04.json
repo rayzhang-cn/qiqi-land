@@ -1,0 +1,25 @@
+{
+  "id": "science-04",
+  "chapter": "science-animals",
+  "order": 4,
+  "domain": "science",
+  "ageBand": "5-6",
+  "template": "classify",
+  "voicePrompt": "把动物分到会飞、水里、陆地三个家",
+  "reward": { "stars": 2 },
+  "data": {
+    "buckets": [
+      { "id": "fly", "label": "会飞", "emoji": "☁️" },
+      { "id": "water", "label": "水里", "emoji": "🌊" },
+      { "id": "land", "label": "陆地", "emoji": "🌳" }
+    ],
+    "items": [
+      { "id": "bird", "emoji": "🦅", "label": "老鹰", "bucketId": "fly" },
+      { "id": "fish", "emoji": "🐬", "label": "海豚", "bucketId": "water" },
+      { "id": "tiger", "emoji": "🐯", "label": "老虎", "bucketId": "land" },
+      { "id": "bee", "emoji": "🦋", "label": "蝴蝶", "bucketId": "fly" },
+      { "id": "whale", "emoji": "🐳", "label": "鲸鱼", "bucketId": "water" },
+      { "id": "panda", "emoji": "🐼", "label": "熊猫", "bucketId": "land" }
+    ]
+  }
+}

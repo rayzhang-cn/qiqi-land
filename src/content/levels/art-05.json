@@ -1,0 +1,13 @@
+{
+  "id": "art-05",
+  "chapter": "art-doodle",
+  "order": 1,
+  "domain": "art",
+  "ageBand": "3-4",
+  "template": "coloring",
+  "voicePrompt": "选一个颜色，画出你喜欢的动物吧！",
+  "reward": { "stars": 1 },
+  "data": {
+    "palette": ["#e53935", "#43a047", "#1e88e5", "#fdd835", "#8e24aa", "#ff9800"]
+  }
+}

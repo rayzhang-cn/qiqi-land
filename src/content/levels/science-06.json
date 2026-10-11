@@ -1,0 +1,22 @@
+{
+  "id": "science-06",
+  "chapter": "science-weather",
+  "order": 2,
+  "domain": "science",
+  "ageBand": "3-4",
+  "template": "classify",
+  "voicePrompt": "下雨要带伞，晴天戴帽子",
+  "reward": { "stars": 1 },
+  "data": {
+    "buckets": [
+      { "id": "sun", "label": "晴天", "emoji": "☀️" },
+      { "id": "rain", "label": "下雨", "emoji": "🌧️" }
+    ],
+    "items": [
+      { "id": "hat", "emoji": "🧢", "label": "帽子", "bucketId": "sun" },
+      { "id": "umbrella", "emoji": "☂️", "label": "雨伞", "bucketId": "rain" },
+      { "id": "boots", "emoji": "🥾", "label": "雨靴", "bucketId": "rain" },
+      { "id": "glasses", "emoji": "🕶️", "label": "墨镜", "bucketId": "sun" }
+    ]
+  }
+}

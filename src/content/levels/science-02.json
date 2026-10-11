@@ -1,0 +1,22 @@
+{
+  "id": "science-02",
+  "chapter": "science-animals",
+  "order": 2,
+  "domain": "science",
+  "ageBand": "3-4",
+  "template": "classify",
+  "voicePrompt": "把会飞的动物放进云朵，水里的放进浪花",
+  "reward": { "stars": 1 },
+  "data": {
+    "buckets": [
+      { "id": "fly", "label": "会飞", "emoji": "☁️" },
+      { "id": "water", "label": "水里", "emoji": "🌊" }
+    ],
+    "items": [
+      { "id": "bird", "emoji": "🐦", "label": "小鸟", "bucketId": "fly" },
+      { "id": "fish", "emoji": "🐟", "label": "鱼", "bucketId": "water" },
+      { "id": "duck", "emoji": "🦆", "label": "鸭子", "bucketId": "water" },
+      { "id": "bee", "emoji": "🐝", "label": "蜜蜂", "bucketId": "fly" }
+    ]
+  }
+}

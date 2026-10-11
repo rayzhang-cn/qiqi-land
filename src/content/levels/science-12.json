@@ -1,0 +1,19 @@
+{
+  "id": "science-12",
+  "chapter": "science-space",
+  "order": 4,
+  "domain": "science",
+  "ageBand": "5-6",
+  "template": "tap-identify",
+  "voicePrompt": "点一点宇航员",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "👨‍🚀", "label": "宇航员" },
+      { "id": "b", "emoji": "🛸", "label": "飞碟" },
+      { "id": "c", "emoji": "🛰️", "label": "卫星" },
+      { "id": "d", "emoji": "🌠", "label": "流星" }
+    ],
+    "answerCardId": "a"
+  }
+}

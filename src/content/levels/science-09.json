@@ -1,0 +1,17 @@
+{
+  "id": "science-09",
+  "chapter": "science-space",
+  "order": 1,
+  "domain": "science",
+  "ageBand": "3-4",
+  "template": "tap-identify",
+  "voicePrompt": "点一点太阳",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "🌞", "label": "太阳" },
+      { "id": "b", "emoji": "🌙", "label": "月亮" }
+    ],
+    "answerCardId": "a"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "art-03",
+  "chapter": "art-colors",
+  "order": 3,
+  "domain": "art",
+  "ageBand": "5-6",
+  "template": "tap-identify",
+  "voicePrompt": "点一点紫色",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "🟣", "label": "紫色" },
+      { "id": "b", "emoji": "🟠", "label": "橙色" },
+      { "id": "c", "emoji": "🟤", "label": "棕色" },
+      { "id": "d", "emoji": "⚫", "label": "黑色" }
+    ],
+    "answerCardId": "a"
+  }
+}

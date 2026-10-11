@@ -1,0 +1,17 @@
+{
+  "id": "science-05",
+  "chapter": "science-weather",
+  "order": 1,
+  "domain": "science",
+  "ageBand": "3-4",
+  "template": "tap-identify",
+  "voicePrompt": "点一点下雨的天气",
+  "reward": { "stars": 1 },
+  "data": {
+    "cards": [
+      { "id": "a", "emoji": "☀️", "label": "晴天" },
+      { "id": "b", "emoji": "🌧️", "label": "下雨" }
+    ],
+    "answerCardId": "b"
+  }
+}

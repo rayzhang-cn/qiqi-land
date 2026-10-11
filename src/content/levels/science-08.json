@@ -1,0 +1,25 @@
+{
+  "id": "science-08",
+  "chapter": "science-weather",
+  "order": 4,
+  "domain": "science",
+  "ageBand": "5-6",
+  "template": "classify",
+  "voicePrompt": "把物品分到晴天、下雨、下雪",
+  "reward": { "stars": 2 },
+  "data": {
+    "buckets": [
+      { "id": "sun", "label": "晴天", "emoji": "☀️" },
+      { "id": "rain", "label": "下雨", "emoji": "🌧️" },
+      { "id": "snow", "label": "下雪", "emoji": "🌨️" }
+    ],
+    "items": [
+      { "id": "hat", "emoji": "🧢", "label": "遮阳帽", "bucketId": "sun" },
+      { "id": "umbrella", "emoji": "☂️", "label": "雨伞", "bucketId": "rain" },
+      { "id": "scarf", "emoji": "🧣", "label": "围巾", "bucketId": "snow" },
+      { "id": "glasses", "emoji": "🕶️", "label": "墨镜", "bucketId": "sun" },
+      { "id": "boots", "emoji": "🥾", "label": "雨靴", "bucketId": "rain" },
+      { "id": "mitten", "emoji": "🧤", "label": "手套", "bucketId": "snow" }
+    ]
+  }
+}

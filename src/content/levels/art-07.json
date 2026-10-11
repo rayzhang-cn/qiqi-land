@@ -1,0 +1,20 @@
+{
+  "id": "art-07",
+  "chapter": "art-rhythm",
+  "order": 1,
+  "domain": "art",
+  "ageBand": "3-4",
+  "template": "music",
+  "voicePrompt": "听一听小动物的叫声，跟着重复",
+  "reward": { "stars": 1 },
+  "data": {
+    "notes": [
+      { "id": "cat", "emoji": "🐱", "tone": 262 },
+      { "id": "dog", "emoji": "🐶", "tone": 330 },
+      { "id": "bird", "emoji": "🐦", "tone": 392 },
+      { "id": "frog", "emoji": "🐸", "tone": 523 }
+    ],
+    "rounds": 3,
+    "startLength": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "art-08",
+  "chapter": "art-rhythm",
+  "order": 2,
+  "domain": "art",
+  "ageBand": "5-6",
+  "template": "music",
+  "voicePrompt": "记住小动物的叫声顺序，重复出来",
+  "reward": { "stars": 1 },
+  "data": {
+    "notes": [
+      { "id": "cat", "emoji": "🐱", "tone": 262 },
+      { "id": "dog", "emoji": "🐶", "tone": 330 },
+      { "id": "bird", "emoji": "🐦", "tone": 392 },
+      { "id": "frog", "emoji": "🐸", "tone": 523 }
+    ],
+    "rounds": 4,
+    "startLength": 2
+  }
+}
