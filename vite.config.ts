@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  base: '/qiqi-land/',
   plugins: [
     react(),
     VitePWA({
@@ -12,6 +13,8 @@ export default defineConfig({
         name: '奇奇乐园',
         short_name: '奇奇乐园',
         display: 'standalone',
+        start_url: '/qiqi-land/',
+        scope: '/qiqi-land/',
         background_color: '#FFF8E7',
         theme_color: '#FFB74D',
         lang: 'zh-CN',
