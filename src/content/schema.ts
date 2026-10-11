@@ -53,3 +53,14 @@ export const LevelSchema = z.discriminatedUnion('template', [
 export type LevelData = z.infer<typeof LevelSchema>;
 export type TapIdentifyData = Extract<LevelData, { template: 'tap-identify' }>['data'];
 export type CountData = Extract<LevelData, { template: 'count' }>['data'];
+
+export const PoemSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  author: z.string().min(1),
+  dynasty: z.string().min(1),
+  lines: z.array(z.string().min(1)).min(2),
+  familiar: z.boolean(),
+});
+
+export type Poem = z.infer<typeof PoemSchema>;

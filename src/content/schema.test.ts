@@ -1,4 +1,4 @@
-import { LevelSchema } from './schema';
+import { LevelSchema, PoemSchema } from './schema';
 
 const base = {
   id: 'l1',
@@ -69,6 +69,43 @@ describe('LevelSchema', () => {
         ],
         answerCardId: 'x',
       },
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('PoemSchema', () => {
+  it('接受合法的诗', () => {
+    const result = PoemSchema.safeParse({
+      id: 'poem-01',
+      title: '静夜思',
+      author: '李白',
+      dynasty: '唐',
+      lines: ['床前明月光', '疑是地上霜'],
+      familiar: true,
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it('拒绝少于两句的诗', () => {
+    const result = PoemSchema.safeParse({
+      id: 'poem-01',
+      title: '静夜思',
+      author: '李白',
+      dynasty: '唐',
+      lines: ['床前明月光'],
+      familiar: true,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('拒绝缺少 familiar 的诗', () => {
+    const result = PoemSchema.safeParse({
+      id: 'poem-01',
+      title: '静夜思',
+      author: '李白',
+      dynasty: '唐',
+      lines: ['床前明月光', '疑是地上霜'],
     });
     expect(result.success).toBe(false);
   });
