@@ -459,3 +459,61 @@ button {
   border-radius: 999px;
   margin-bottom: 16px;
 }
+
+.arithmetic {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.arith-progress {
+  color: #8d6e63;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.arith-question {
+  font-size: 2.4rem;
+  margin: 12px 0;
+  color: #3e2723;
+}
+
+.fill-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.fill-input {
+  font-size: 2.4rem;
+  background: #fff;
+  border-radius: 16px;
+  width: 120px;
+  height: 72px;
+  line-height: 72px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.num-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 72px);
+  gap: 10px;
+}
+
+.num-key {
+  background: #fff;
+  border-radius: 16px;
+  height: 64px;
+  font-size: 1.6rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.num-confirm {
+  background: #c8e6c9;
+}
+
+.arith-wrong {
+  color: #e53935;
+  margin-top: 12px;
+  font-size: 1.1rem;
+}
