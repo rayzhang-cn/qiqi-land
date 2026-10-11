@@ -20,14 +20,16 @@ export function MusicGame({ data, onCorrect, onMistake }: Props) {
   const timersRef = useRef<number[]>([]);
 
   const startRound = useCallback(
-    (r: number) => {
-      const seq = Array.from({ length: data.startLength + r }, () =>
-        Math.floor(Math.random() * data.notes.length),
-      );
-      setSequence(seq);
+    (r: number, seq?: number[]) => {
+      const s =
+        seq ??
+        Array.from({ length: data.startLength + r }, () =>
+          Math.floor(Math.random() * data.notes.length),
+        );
+      setSequence(s);
       setInputIndex(0);
       setPhase('playing');
-      seq.forEach((noteIdx, i) => {
+      s.forEach((noteIdx, i) => {
         const t = window.setTimeout(() => {
           setActiveNote(noteIdx);
           playTone(data.notes[noteIdx].tone, 400);
@@ -36,7 +38,7 @@ export function MusicGame({ data, onCorrect, onMistake }: Props) {
         }, i * 600 + 300);
         timersRef.current.push(t);
       });
-      const endT = window.setTimeout(() => setPhase('listening'), seq.length * 600 + 400);
+      const endT = window.setTimeout(() => setPhase('listening'), s.length * 600 + 400);
       timersRef.current.push(endT);
     },
     [data],
@@ -69,7 +71,7 @@ export function MusicGame({ data, onCorrect, onMistake }: Props) {
     } else {
       setInputIndex(0);
       onMistake();
-      startRound(round);
+      startRound(round, sequence);
     }
   };
 
