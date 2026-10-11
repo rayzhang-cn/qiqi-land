@@ -517,3 +517,42 @@ button {
   margin-top: 12px;
   font-size: 1.1rem;
 }
+
+.chapter-select {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px;
+  text-align: center;
+}
+
+.chapter-select-title {
+  font-size: 2rem;
+  color: #ff8a65;
+  margin: 8px 0 16px;
+}
+
+.chapter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chapter-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: left;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chapter-card-title {
+  display: block;
+  font-size: 1.5rem;
+  color: #3e2723;
+}
+
+.chapter-card-story {
+  display: block;
+  color: #8d6e63;
+  margin-top: 4px;
+}

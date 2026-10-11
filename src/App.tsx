@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ProfileSelect } from './screens/ProfileSelect';
 import { WorldMap } from './screens/WorldMap';
+import { ChapterSelect } from './screens/ChapterSelect';
 import { ChapterView } from './screens/ChapterView';
 import { GameEngine } from './engine/GameEngine';
 import { PoemList } from './screens/PoemList';
@@ -10,6 +11,7 @@ import { getLevel, getPoem } from './content';
 type Screen =
   | { name: 'profiles' }
   | { name: 'map' }
+  | { name: 'chapters'; island: string }
   | { name: 'chapter'; chapterId: string }
   | { name: 'game'; levelId: string }
   | { name: 'poem-list' }
@@ -21,7 +23,7 @@ export function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'profiles' });
 
   const openIsland = (domain: string) => {
-    if (domain === 'math') setScreen({ name: 'chapter', chapterId: 'math-ch1' });
+    if (domain === 'math') setScreen({ name: 'chapters', island: 'math' });
     else if (domain === 'language') setScreen({ name: 'poem-list' });
   };
 
@@ -30,6 +32,14 @@ export function App() {
       return <ProfileSelect onEnter={() => setScreen(MAP)} />;
     case 'map':
       return <WorldMap onOpenIsland={openIsland} />;
+    case 'chapters':
+      return (
+        <ChapterSelect
+          island={screen.island}
+          onSelectChapter={(chapterId) => setScreen({ name: 'chapter', chapterId })}
+          onBack={() => setScreen(MAP)}
+        />
+      );
     case 'chapter':
       return (
         <ChapterView

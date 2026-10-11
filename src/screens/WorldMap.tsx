@@ -1,12 +1,6 @@
 import { useProfilesStore } from '../stores/profiles';
 import { useProgressStore } from '../stores/progress';
-
-const ISLANDS = [
-  { domain: 'math', emoji: '🔢', name: '数学山', open: true },
-  { domain: 'language', emoji: '🔤', name: '语言岛', open: true },
-  { domain: 'science', emoji: '🦕', name: '科学森林', open: false },
-  { domain: 'art', emoji: '🎨', name: '艺术城堡', open: false },
-] as const;
+import { ISLANDS } from '../islands';
 
 export function WorldMap({ onOpenIsland }: { onOpenIsland: (domain: string) => void }) {
   const profile = useProfilesStore((s) => s.profiles.find((p) => p.id === s.activeId));
