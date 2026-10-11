@@ -33,4 +33,23 @@ describe('useSpeech', () => {
     expect(result.current.supported).toBe(false);
     expect(() => result.current.speak('你好')).not.toThrow();
   });
+
+  it('cancel 调用 speechSynthesis.cancel', () => {
+    const cancel = vi.fn();
+    vi.stubGlobal('speechSynthesis', { speak: vi.fn(), cancel });
+    vi.stubGlobal(
+      'SpeechSynthesisUtterance',
+      class {
+        text: string;
+        lang = '';
+        rate = 1;
+        constructor(t: string) {
+          this.text = t;
+        }
+      },
+    );
+    const { result } = renderHook(() => useSpeech());
+    result.current.cancel();
+    expect(cancel).toHaveBeenCalledTimes(1);
+  });
 });

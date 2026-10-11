@@ -15,5 +15,10 @@ export function useSpeech() {
     [supported],
   );
 
-  return { speak, supported };
+  const cancel = useCallback(() => {
+    if (!supported) return;
+    window.speechSynthesis.cancel();
+  }, [supported]);
+
+  return { speak, cancel, supported };
 }
