@@ -1,0 +1,12 @@
+{
+  "id": "math-arith-05",
+  "chapter": "math-ch2",
+  "order": 5,
+  "domain": "math",
+  "ageBand": "5-6",
+  "template": "arithmetic",
+  "mode": "fill",
+  "voicePrompt": "算一算，填上正确的答案",
+  "reward": { "stars": 1 },
+  "data": { "op": "add", "maxResult": 10, "problemCount": 5 }
+}
