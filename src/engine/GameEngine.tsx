@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { LevelData } from '../content/schema';
 import { useSpeech } from './useSpeech';
 import { useProfilesStore } from '../stores/profiles';
@@ -16,9 +16,9 @@ export function GameEngine({ level, onExit }: { level: LevelData; onExit: () => 
   const avatar = useProfilesStore((s) => s.profiles.find((p) => p.id === s.activeId)?.avatar ?? '🦖');
   const recordAttempt = useProgressStore((s) => s.recordAttempt);
 
-  useEffect(() => {
+  const speakPrompt = () => {
     speak(level.storyLine ? `${level.storyLine}，${level.voicePrompt}` : level.voicePrompt);
-  }, [level.id, level.storyLine, level.voicePrompt, speak]);
+  };
 
   const handleCorrect = () => {
     if (activeId) recordAttempt(activeId, level.id, true, level.reward.stars);
@@ -49,6 +49,9 @@ export function GameEngine({ level, onExit }: { level: LevelData; onExit: () => 
     <div className="game-screen">
       <Buddy avatar={avatar} text={level.storyLine ?? ''} />
       <p className="voice-prompt">{level.voicePrompt}</p>
+      <button className="listen-button" onClick={speakPrompt} aria-label="听一听">
+        🔊 听一听
+      </button>
       {level.template === 'tap-identify' ? (
         <TapToIdentify data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
       ) : (

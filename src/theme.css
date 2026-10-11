@@ -449,3 +449,13 @@ button {
   background: #fff3e0;
   color: #ef6c00;
 }
+
+.listen-button {
+  background: #fff;
+  border: 2px solid #ffcc80;
+  color: #5d4037;
+  font-size: 1.1rem;
+  padding: 8px 20px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}

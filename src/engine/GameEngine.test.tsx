@@ -5,8 +5,10 @@ import { useProfilesStore } from '../stores/profiles';
 import { useProgressStore } from '../stores/progress';
 import type { LevelData } from '../content/schema';
 
+const { speakMock } = vi.hoisted(() => ({ speakMock: vi.fn() }));
+
 vi.mock('./useSpeech', () => ({
-  useSpeech: () => ({ speak: vi.fn(), supported: true }),
+  useSpeech: () => ({ speak: speakMock, cancel: vi.fn(), supported: true }),
 }));
 
 const level: LevelData = {
@@ -24,6 +26,7 @@ const level: LevelData = {
 
 beforeEach(() => {
   localStorage.clear();
+  speakMock.mockClear();
   useProfilesStore.setState({
     profiles: [{ id: 'p1', name: '小宝', avatar: '🦖', ageBand: '3-4' }],
     activeId: 'p1',
@@ -36,6 +39,13 @@ describe('GameEngine', () => {
     render(<GameEngine level={level} onExit={vi.fn()} />);
     expect(screen.getByText('欢迎来到数数谷！')).toBeInTheDocument();
     expect(screen.getByText('数一数，有几个苹果？')).toBeInTheDocument();
+  });
+
+  it('挂载时不自动朗读，点击听一听才朗读', async () => {
+    render(<GameEngine level={level} onExit={vi.fn()} />);
+    expect(speakMock).not.toHaveBeenCalled();
+    await userEvent.click(screen.getByRole('button', { name: '听一听' }));
+    expect(speakMock).toHaveBeenCalledWith('欢迎来到数数谷！，数一数，有几个苹果？');
   });
 
   it('答对后进入奖励页并记录星星', async () => {
