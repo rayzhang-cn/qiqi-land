@@ -39,6 +39,34 @@ export const LevelSchema = z.discriminatedUnion('template', [
       problemCount: z.number().int().min(1).max(20),
     }),
   }),
+  LevelBase.extend({
+    template: z.literal('classify'),
+    data: z.object({
+      buckets: z
+        .array(z.object({ id: z.string(), label: z.string(), emoji: z.string() }))
+        .min(2)
+        .max(3),
+      items: z
+        .array(z.object({ id: z.string(), emoji: z.string(), label: z.string(), bucketId: z.string() }))
+        .min(2)
+        .max(8),
+    }),
+  }),
+  LevelBase.extend({
+    template: z.literal('coloring'),
+    data: z.object({
+      palette: z.array(z.string().min(1)).min(2).max(8),
+      prompt: z.string().optional(),
+    }),
+  }),
+  LevelBase.extend({
+    template: z.literal('music'),
+    data: z.object({
+      notes: z.array(z.object({ id: z.string(), emoji: z.string(), tone: z.number().positive() })).min(2).max(6),
+      rounds: z.number().int().min(1).max(6),
+      startLength: z.number().int().min(1).max(4),
+    }),
+  }),
 ]).superRefine((level, ctx) => {
   if (level.template === 'count' && !level.data.choices.includes(level.data.answer)) {
     ctx.addIssue({
@@ -57,12 +85,27 @@ export const LevelSchema = z.discriminatedUnion('template', [
       path: ['data', 'answerCardId'],
     });
   }
+  if (level.template === 'classify') {
+    const bucketIds = new Set(level.data.buckets.map((b) => b.id));
+    for (const item of level.data.items) {
+      if (!bucketIds.has(item.bucketId)) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: `item ${item.id} 的 bucketId 必须是 buckets 中某个桶的 id`,
+          path: ['data', 'items'],
+        });
+      }
+    }
+  }
 });
 
 export type LevelData = z.infer<typeof LevelSchema>;
 export type TapIdentifyData = Extract<LevelData, { template: 'tap-identify' }>['data'];
 export type CountData = Extract<LevelData, { template: 'count' }>['data'];
 export type ArithmeticData = Extract<LevelData, { template: 'arithmetic' }>['data'];
+export type ClassifyData = Extract<LevelData, { template: 'classify' }>['data'];
+export type ColoringData = Extract<LevelData, { template: 'coloring' }>['data'];
+export type MusicData = Extract<LevelData, { template: 'music' }>['data'];
 
 export const PoemSchema = z.object({
   id: z.string().min(1),

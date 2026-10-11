@@ -116,6 +116,67 @@ describe('LevelSchema arithmetic', () => {
   });
 });
 
+describe('LevelSchema science/art', () => {
+  it('接受合法的分类关卡', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      domain: 'science',
+      template: 'classify',
+      data: {
+        buckets: [
+          { id: 'fly', label: '会飞', emoji: '☁️' },
+          { id: 'water', label: '水里', emoji: '🌊' },
+        ],
+        items: [
+          { id: 'bird', emoji: '🐦', label: '小鸟', bucketId: 'fly' },
+          { id: 'fish', emoji: '🐟', label: '鱼', bucketId: 'water' },
+        ],
+      },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it('拒绝 bucketId 不在 buckets 中的分类关卡', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      domain: 'science',
+      template: 'classify',
+      data: {
+        buckets: [{ id: 'fly', label: '会飞', emoji: '☁️' }],
+        items: [{ id: 'bird', emoji: '🐦', label: '小鸟', bucketId: 'nope' }],
+      },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('接受合法的涂色关卡', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      domain: 'art',
+      template: 'coloring',
+      data: { palette: ['#e53935', '#43a047', '#1e88e5'] },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it('接受合法的音乐关卡', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      domain: 'art',
+      template: 'music',
+      data: {
+        notes: [
+          { id: 'cat', emoji: '🐱', tone: 262 },
+          { id: 'dog', emoji: '🐶', tone: 330 },
+        ],
+        rounds: 3,
+        startLength: 1,
+      },
+    });
+    expect(result.success).toBe(true);
+  });
+});
+
 describe('PoemSchema', () => {
   it('接受合法的诗', () => {
     const result = PoemSchema.safeParse({
