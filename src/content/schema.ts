@@ -30,6 +30,15 @@ export const LevelSchema = z.discriminatedUnion('template', [
       answer: z.number().int().positive(),
     }),
   }),
+  LevelBase.extend({
+    template: z.literal('arithmetic'),
+    mode: z.enum(['choice', 'fill']),
+    data: z.object({
+      op: z.enum(['add', 'sub', 'mixed']),
+      maxResult: z.number().int().min(2).max(30),
+      problemCount: z.number().int().min(1).max(20),
+    }),
+  }),
 ]).superRefine((level, ctx) => {
   if (level.template === 'count' && !level.data.choices.includes(level.data.answer)) {
     ctx.addIssue({
@@ -53,6 +62,7 @@ export const LevelSchema = z.discriminatedUnion('template', [
 export type LevelData = z.infer<typeof LevelSchema>;
 export type TapIdentifyData = Extract<LevelData, { template: 'tap-identify' }>['data'];
 export type CountData = Extract<LevelData, { template: 'count' }>['data'];
+export type ArithmeticData = Extract<LevelData, { template: 'arithmetic' }>['data'];
 
 export const PoemSchema = z.object({
   id: z.string().min(1),

@@ -74,6 +74,48 @@ describe('LevelSchema', () => {
   });
 });
 
+describe('LevelSchema arithmetic', () => {
+  it('接受合法的算术关卡（choice）', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      template: 'arithmetic',
+      mode: 'choice',
+      data: { op: 'add', maxResult: 10, problemCount: 5 },
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it('拒绝非法 mode', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      template: 'arithmetic',
+      mode: 'typo',
+      data: { op: 'add', maxResult: 10, problemCount: 5 },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('拒绝 maxResult 超过 30', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      template: 'arithmetic',
+      mode: 'fill',
+      data: { op: 'add', maxResult: 31, problemCount: 5 },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('拒绝 maxResult 小于 2', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      template: 'arithmetic',
+      mode: 'fill',
+      data: { op: 'add', maxResult: 1, problemCount: 5 },
+    });
+    expect(result.success).toBe(false);
+  });
+});
+
 describe('PoemSchema', () => {
   it('接受合法的诗', () => {
     const result = PoemSchema.safeParse({

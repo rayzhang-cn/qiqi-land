@@ -54,9 +54,9 @@ export function GameEngine({ level, onExit }: { level: LevelData; onExit: () => 
       </button>
       {level.template === 'tap-identify' ? (
         <TapToIdentify data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
-      ) : (
+      ) : level.template === 'count' ? (
         <CountingGame data={level.data} onCorrect={handleCorrect} onMistake={handleMistake} />
-      )}
+      ) : null}
     </div>
   );
 }
