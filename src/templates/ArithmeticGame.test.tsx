@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ArithmeticGame } from './ArithmeticGame';
 import type { ArithmeticData } from '../content/schema';
@@ -21,6 +21,14 @@ describe('ArithmeticGame', () => {
     const onCorrect = vi.fn();
     render(<ArithmeticGame data={data} mode="choice" onCorrect={onCorrect} onMistake={vi.fn()} />);
     await userEvent.click(screen.getByRole('button', { name: '8' }));
+    expect(onCorrect).toHaveBeenCalledTimes(1);
+  });
+
+  it('连点正确答案只触发一次 onCorrect', () => {
+    const onCorrect = vi.fn();
+    render(<ArithmeticGame data={data} mode="choice" onCorrect={onCorrect} onMistake={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: '8' }));
+    fireEvent.click(screen.getByRole('button', { name: '8' }));
     expect(onCorrect).toHaveBeenCalledTimes(1);
   });
 

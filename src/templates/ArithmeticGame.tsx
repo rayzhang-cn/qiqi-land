@@ -24,11 +24,14 @@ export function ArithmeticGame({ data, mode, onCorrect, onMistake }: Props) {
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState('');
   const [wrong, setWrong] = useState(false);
+  const [solved, setSolved] = useState(false);
 
   const round = rounds[index];
 
   const handleCorrect = () => {
+    if (solved) return;
     if (index >= rounds.length - 1) {
+      setSolved(true);
       onCorrect();
     } else {
       setIndex(index + 1);
@@ -38,6 +41,7 @@ export function ArithmeticGame({ data, mode, onCorrect, onMistake }: Props) {
   };
 
   const handleMistake = () => {
+    if (solved) return;
     setWrong(true);
     onMistake();
   };
