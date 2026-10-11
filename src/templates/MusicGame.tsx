@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { MusicData } from '../content/schema';
-import { playTone } from './audio';
+import { playTone, resumeAudio } from './audio';
 
 type Phase = 'idle' | 'playing' | 'listening';
 
@@ -43,6 +43,7 @@ export function MusicGame({ data, onCorrect, onMistake }: Props) {
   );
 
   const start = () => {
+    resumeAudio();
     setRound(0);
     setDone(false);
     startRound(0);

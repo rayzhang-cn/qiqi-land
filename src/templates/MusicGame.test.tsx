@@ -2,7 +2,7 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import { MusicGame } from './MusicGame';
 import type { MusicData } from '../content/schema';
 
-vi.mock('./audio', () => ({ playTone: vi.fn() }));
+vi.mock('./audio', () => ({ playTone: vi.fn(), resumeAudio: vi.fn() }));
 
 const data: MusicData = {
   notes: [

@@ -18,3 +18,14 @@ export function playTone(freq: number, durationMs = 400) {
   osc.start();
   osc.stop(ctx.currentTime + durationMs / 1000);
 }
+
+export function resumeAudio() {
+  const Ctx =
+    window.AudioContext ??
+    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+  if (!Ctx) return;
+  if (!audioContext) audioContext = new Ctx();
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
+}
