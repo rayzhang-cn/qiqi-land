@@ -48,4 +48,28 @@ describe('LevelSchema', () => {
     const result = LevelSchema.safeParse({ ...base, template: 'unknown', data: {} });
     expect(result.success).toBe(false);
   });
+
+  it('拒绝 answer 不在 choices 中的数数关卡', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      template: 'count',
+      data: { objects: [{ emoji: '🍎', count: 3 }], choices: [2, 4, 5], answer: 3 },
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('拒绝 answerCardId 不在 cards 中的点选关卡', () => {
+    const result = LevelSchema.safeParse({
+      ...base,
+      template: 'tap-identify',
+      data: {
+        cards: [
+          { id: 'a', emoji: '🍎', label: '红苹果' },
+          { id: 'b', emoji: '🍏', label: '青苹果' },
+        ],
+        answerCardId: 'x',
+      },
+    });
+    expect(result.success).toBe(false);
+  });
 });

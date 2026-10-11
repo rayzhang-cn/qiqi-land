@@ -30,7 +30,25 @@ export const LevelSchema = z.discriminatedUnion('template', [
       answer: z.number().int().positive(),
     }),
   }),
-]);
+]).superRefine((level, ctx) => {
+  if (level.template === 'count' && !level.data.choices.includes(level.data.answer)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'answer 必须包含在 choices 中',
+      path: ['data', 'answer'],
+    });
+  }
+  if (
+    level.template === 'tap-identify' &&
+    !level.data.cards.some((c) => c.id === level.data.answerCardId)
+  ) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'answerCardId 必须是 cards 中某个卡片的 id',
+      path: ['data', 'answerCardId'],
+    });
+  }
+});
 
 export type LevelData = z.infer<typeof LevelSchema>;
 export type TapIdentifyData = Extract<LevelData, { template: 'tap-identify' }>['data'];

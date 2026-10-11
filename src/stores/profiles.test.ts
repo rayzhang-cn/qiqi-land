@@ -25,4 +25,17 @@ describe('useProfilesStore', () => {
     expect(raw).not.toBeNull();
     expect(raw).toContain('小宝');
   });
+
+  it('crypto.randomUUID 不可用时使用回退 id', () => {
+    const original = globalThis.crypto;
+    // @ts-expect-error 故意删除 crypto 模拟非安全上下文
+    delete globalThis.crypto;
+    try {
+      const id = useProfilesStore.getState().addProfile({ name: '回退', avatar: '🐰', ageBand: '3-4' });
+      expect(id).toBeTruthy();
+      expect(useProfilesStore.getState().profiles[0].id).toBe(id);
+    } finally {
+      globalThis.crypto = original;
+    }
+  });
 });
